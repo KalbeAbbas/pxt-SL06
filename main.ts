@@ -558,6 +558,8 @@ namespace SL06 {
         } else if (gesture_motion_ == DIR_LEFT)
         {
             dir_id = -2
+        }else{
+            dir_id = 0
         }
 
         return dir_id
