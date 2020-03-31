@@ -463,10 +463,10 @@ namespace SL06 {
         }
     }
 
-    //%blockId=SL06_getGesture
-    //%block="SL06 gesture"
+    //%blockId=SL06_readGesture
+    //%block="SL06 read gesture"
     //%group=Gesture
-    export function gesture(): string {
+    export function gesture() {
         let fifo_level = 0;
         let bytes_read = 0;
         let gstatus: number;
@@ -478,7 +478,7 @@ namespace SL06 {
 
         /* Make sure that power and gesture is on and data is valid */
         if (!isGestureAvailable() || !(mode)) {
-            return DIR_NONE;
+            return;
         }
 
         /* Keep looping as long as gesture data is valid */
@@ -491,8 +491,6 @@ namespace SL06 {
             /* Get the contents of the STATUS register. Is data still valid? */
             // APDS9960_GSTATUS
             gstatus = wireReadDataByte(0xAF);
-
-            console.logValue("gstatus", gstatus)
 
             /* If we have valid data, read in FIFO */
             if ((gstatus & 0b00000001) == 0b00000001) {
@@ -536,13 +534,33 @@ namespace SL06 {
                 basic.pause(30);
                 decodeGesture();
                 motion = gesture_motion_;
+
                 resetGestureParameters();
-                return motion;
-                console.log("Else")
             }
         }
 
-        return DIR_ALL
+    }
+
+    //%blockId="getGestureID"
+    //%block="SL06 get gesture ID"
+    export function getGestureID(): number
+    {
+        let dir_id: number = 0
+        if(gesture_motion_ == DIR_UP)
+        {
+            dir_id = 1
+        } else if (gesture_motion_ == DIR_RIGHT)
+        {
+            dir_id = 2
+        }else if(gesture_motion_ == DIR_DOWN)
+        {
+            dir_id = -1
+        } else if (gesture_motion_ == DIR_LEFT)
+        {
+            dir_id = -2
+        }
+
+        return dir_id
     }
 
     function decodeGesture(): boolean {
