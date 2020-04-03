@@ -552,6 +552,8 @@ namespace SL06 {
         control.raiseEvent(5, 8)
     }
 
+    console.log(motion)
+
     }
 
     //%block="SL06 on gesture up"
