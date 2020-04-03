@@ -17,6 +17,8 @@ namespace SL06 {
     let DIR_FAR = 'far'
     let DIR_ALL = 'all'
 
+    let motion_global: string = ""
+
     enum states {
         NA_STATE1,
         NEAR_STATE1,
@@ -534,6 +536,7 @@ namespace SL06 {
                 basic.pause(30);
                 decodeGesture();
                 motion = gesture_motion_;
+                motion_global = gesture_motion_
                 resetGestureParameters();
 
                 if (motion == DIR_UP) {
@@ -620,7 +623,7 @@ namespace SL06 {
             dir_id = -2
         }*/
 
-        console.log(gesture_motion_)
+        console.log(motion_global)
 
         return 0
     }
