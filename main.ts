@@ -613,24 +613,21 @@ namespace SL06 {
     //%block="SL06 get gesture ID"
     export function getGestureID(): number {
         let dir_id: number = 0
-        if (motion_global == DIR_UP) 
-        {
+        if (motion_global == DIR_UP) {
             dir_id = 1
-        } else if (motion_global == DIR_RIGHT)
-        {
+        } else if (motion_global == DIR_RIGHT) {
             dir_id = 2
-        } else if (motion_global == DIR_DOWN)
-        {
+        } else if (motion_global == DIR_DOWN) {
             dir_id = 3
-        } else if (motion_global == DIR_LEFT)
-        {
+        } else if (motion_global == DIR_LEFT) {
             dir_id = 4
-        }else if(motion_global == DIR_NEAR)
-        {
+        } else if (motion_global == DIR_NEAR) {
             dir_id = 5
-        }else if(motion_global == DIR_FAR)
-        {
+        } else if (motion_global == DIR_FAR) {
             dir_id = 6
+        }else
+        {
+            dir_id = 0
         }
 
         return dir_id
