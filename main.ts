@@ -535,21 +535,22 @@ namespace SL06 {
                 decodeGesture();
                 motion = gesture_motion_;
                 resetGestureParameters();
-                console.log("else")
+                
+                if (motion == DIR_UP) {
+                    control.raiseEvent(5, 5)
+                } else if (motion == DIR_DOWN) {
+                    control.raiseEvent(5, 6)
+                } else if (motion == DIR_RIGHT) {
+                    control.raiseEvent(5, 7)
+                } else if (motion == DIR_LEFT) {
+                    control.raiseEvent(5, 8)
+                }
+
+                console.log(motion)
+                return ;
+
             }
         }
-
-        if (motion == DIR_UP) {
-            control.raiseEvent(5, 5)
-        } else if (motion == DIR_DOWN) {
-            control.raiseEvent(5, 6)
-        } else if (motion == DIR_RIGHT) {
-            control.raiseEvent(5, 7)
-        } else if (motion == DIR_LEFT) {
-            control.raiseEvent(5, 8)
-        }
-
-        console.log(motion)
 
     }
 
