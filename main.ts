@@ -541,6 +541,14 @@ namespace SL06 {
 
     }
 
+    //%block="on gesture up"
+    export function onGestureUp(handler: ()=>void )
+    {
+        control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_BUTTON_EVT_CLICK, function () {
+            handler()
+        })
+    }
+
     //%blockId="getGestureID"
     //%block="SL06 get gesture ID"
     export function getGestureID(): number {
@@ -558,7 +566,7 @@ namespace SL06 {
         return dir_id
     }
 
-    
+
 
     function decodeGesture(): boolean {
         /* Return if near or far event is detected */
