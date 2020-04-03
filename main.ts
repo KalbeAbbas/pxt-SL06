@@ -535,7 +535,7 @@ namespace SL06 {
                 decodeGesture();
                 motion = gesture_motion_;
                 resetGestureParameters();
-                
+
                 if (motion == DIR_UP) {
                     control.raiseEvent(5, 5)
                 } else if (motion == DIR_DOWN) {
@@ -544,10 +544,15 @@ namespace SL06 {
                     control.raiseEvent(5, 7)
                 } else if (motion == DIR_LEFT) {
                     control.raiseEvent(5, 8)
+                }else if(motion == DIR_NEAR)
+                {
+                    control.raiseEvent(5, 9)
+                }else if(motion == DIR_FAR)
+                {
+                    control.raiseEvent(5, 10)
                 }
 
-                console.log(motion)
-                return ;
+                return;
 
             }
         }
@@ -582,6 +587,22 @@ namespace SL06 {
     //%group=Gesture
     export function onGestureLeft(handler: () => void) {
         control.onEvent(5, 8, function () {
+            handler()
+        })
+    }
+
+    //%block="SL06 on gesture near"
+    //%group=Gesture
+    export function onGestureNear(handler: () => void) {
+        control.onEvent(5, 9, function () {
+            handler()
+        })
+    }
+
+    //%block="SL06 on gesture far"
+    //%group=Gesture
+    export function onGestureFar(handler: () => void) {
+        control.onEvent(5, 10, function () {
             handler()
         })
     }
