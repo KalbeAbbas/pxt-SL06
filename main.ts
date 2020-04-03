@@ -544,11 +544,9 @@ namespace SL06 {
                     control.raiseEvent(5, 7)
                 } else if (motion == DIR_LEFT) {
                     control.raiseEvent(5, 8)
-                }else if(motion == DIR_NEAR)
-                {
+                } else if (motion == DIR_NEAR) {
                     control.raiseEvent(5, 9)
-                }else if(motion == DIR_FAR)
-                {
+                } else if (motion == DIR_FAR) {
                     control.raiseEvent(5, 10)
                 }
 
@@ -611,7 +609,7 @@ namespace SL06 {
     //%blockId="getGestureID"
     //%block="SL06 get gesture ID"
     export function getGestureID(): number {
-        let dir_id: number = 0
+        /*let dir_id: number = 0
         if (gesture_motion_ == DIR_UP) {
             dir_id = 1
         } else if (gesture_motion_ == DIR_RIGHT) {
@@ -620,9 +618,11 @@ namespace SL06 {
             dir_id = -1
         } else if (gesture_motion_ == DIR_LEFT) {
             dir_id = -2
-        }
+        }*/
 
-        return dir_id
+        console.log(gesture_motion_)
+
+        return 0
     }
 
 
