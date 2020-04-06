@@ -908,8 +908,8 @@ namespace SL06 {
             disableGestureSensor()
             enableProximitySensor()
         } else if (u == sl06_mode.GESTURE_MODE) {
-            disableLightSensor()
-            disableProximitySensor()
+            enableLightSensor()
+            enableProximitySensor()
             enableGestureSensor()
         }
     }
